@@ -3,49 +3,164 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Jadder Torralvo — Interactive CV</title>
+<title>Jadder Torralvo — CV</title>
 <style>
-:root{
-  --bg-light:#ffffff;
-  --card-light:#f7f9fc;
-  --text-light:#0f1724;
-  --muted-light:#475569;
-  --accent:#0066cc;
-  --accent-2:#0ea5a4;
-  --bg-dark:#071028;
-  --card-dark:#0f1724;
-  --text-dark:#e6eef8;
-  --muted-dark:#9fb1c8;
+:root {
+  --bg-light: #ffffff;
+  --card-light: #f9f9f9;
+  --text-light: #111111;
+  --muted-light: #555555;
+  --accent: #222222;
+
+  --bg-dark: #0e0e0e;
+  --card-dark: #1a1a1a;
+  --text-dark: #f5f5f5;
+  --muted-dark: #aaaaaa;
+  --accent-dark: #f0f0f0;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transition:background 300ms,color 300ms}
-.container{max-width:1000px;margin:32px auto;padding:20px}
-.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));backdrop-filter: blur(6px);border-radius:10px;padding:12px;border:1px solid #eef5ff;display:flex;align-items:center;gap:16px}
-.brand{display:flex;align-items:center;gap:12px}
-.profile-pic{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 6px 18px rgba(6,30,80,0.08)}
-.brand h1{font-size:1.15rem;margin-bottom:4px}
-.brand p{font-size:0.9rem;color:var(--muted-light)}
-.nav{margin-left:auto;display:flex;gap:12px;align-items:center}
-.nav a{color:var(--muted-light);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:0.9rem;transition:all 180ms}
-.nav a:hover{background:rgba(0,102,204,0.08);color:var(--accent)}
-.section{margin-top:28px}
-.card{background:var(--card-light);padding:18px;border-radius:12px;border:1px solid #e8f3ff;box-shadow:0 8px 30px rgba(12,38,77,0.04);transform:translateY(12px);opacity:0;transition:all 600ms cubic-bezier(.2,.9,.25,1)}
-.card.revealed{transform:none;opacity:1}
-.h2{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.h2 .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(0,102,204,0.35)}
-.meta{color:var(--muted-light);font-size:0.95rem;margin-bottom:8px}
-.skills{display:flex;gap:8px;flex-wrap:wrap}
-.skill{background:rgba(0,102,204,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-size:0.85rem}
-.footer{margin-top:28px;text-align:center;color:#64748b;font-size:0.9rem}
-@media (prefers-color-scheme: dark){
-  body{background:var(--bg-dark);color:var(--text-dark)}
-  .header{background:linear-gradient(180deg, rgba(8,16,30,0.8), rgba(6,12,20,0.6));border:1px solid rgba(255,255,255,0.04)}
-  .brand p{color:var(--muted-dark)}
-  .card{background:var(--card-dark);border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(0,0,0,0.45)}
-  .nav a{color:var(--muted-dark)}
-  .meta{color:var(--muted-dark)}
-  .footer{color:#9fb1c8}
-  .skill{background:rgba(14,165,164,0.06);color:var(--accent-2)}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-light);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-light);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.brand h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand p {
+  font-size: 0.9rem;
+  color: var(--muted-light);
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--muted-light);
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav a:hover {
+  background: #eaeaea;
+  color: var(--text-light);
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.card {
+  background: var(--card-light);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-light);
+}
+
+.meta {
+  font-size: 0.95rem;
+  color: var(--muted-light);
+  margin-bottom: 10px;
+}
+
+.skills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skill {
+  background: #eaeaea;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background: var(--bg-dark); color: var(--text-dark); }
+  .header { background: var(--card-dark); border: 1px solid #2a2a2a; }
+  .brand p { color: var(--muted-dark); }
+  .nav a { color: var(--muted-dark); }
+  .nav a:hover { background: #2a2a2a; color: var(--accent-dark); }
+  .card { background: var(--card-dark); border: 1px solid #2a2a2a; }
+  .h2 { color: var(--accent-dark); }
+  .meta { color: var(--muted-dark); }
+  .skill { background: #2a2a2a; color: var(--accent-dark); }
+  .footer { color: #888; }
 }
 </style>
 </head>
@@ -54,7 +169,7 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <header class="header">
     <div class="brand">
-      <img src="profile.jpg" alt="Jadder Torralvo" class="profile-pic">
+      <img src="jdprofile.jpeg" alt="Jadder Torralvo" class="profile-pic">
       <div>
         <h1>Jadder Torralvo</h1>
         <p>Key Account Manager • Turismo Náutico — Cartagena</p>
@@ -71,7 +186,7 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <section id="profile" class="section">
     <div class="card">
-      <div class="h2"><span class="dot"></span><h3>Perfil Profesional</h3></div>
+      <h2 class="h2">Perfil Profesional</h2>
       <p class="meta">
         Soy un profesional en Hotelería y Turismo con experiencia en la <strong>gestión de cuentas clave, eventos corporativos y turismo de lujo</strong>. A lo largo de mi trayectoria he trabajado en reconocidas cadenas hoteleras y empresas de turismo náutico, donde he fortalecido mis habilidades en la <strong>atención a clientes VIP internacionales, la planificación de experiencias premium y la coordinación logística de proyectos de alto impacto</strong>.
       </p>
@@ -89,7 +204,7 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <section id="experience" class="section">
     <div class="card">
-      <div class="h2"><span class="dot"></span><h3>Experiencia</h3></div>
+      <h2 class="h2">Experiencia</h2>
       <ul>
         <li><strong>Key Account Manager</strong> | Bona Vida Catamaranes (2023 – Presente)</li>
         <li><strong>Supervisor de Recepción</strong> | Sofitel Barú Calablanca (2021 – 2023)</li>
@@ -100,7 +215,7 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <section id="education" class="section">
     <div class="card">
-      <div class="h2"><span class="dot"></span><h3>Educación</h3></div>
+      <h2 class="h2">Educación</h2>
       <ul>
         <li>Diplomado en Gestión de Cuentas Clave — Univ. del Norte (2023)</li>
         <li>Administración de Empresas Turísticas y Hoteleras — UNICOLOMBO (2012–2019)</li>
@@ -111,7 +226,7 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <section id="skills" class="section">
     <div class="card">
-      <div class="h2"><span class="dot"></span><h3>Habilidades</h3></div>
+      <h2 class="h2">Habilidades</h2>
       <div class="skills">
         <span class="skill">Gestión de Eventos</span>
         <span class="skill">Key Account Management</span>
@@ -125,9 +240,10 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 
   <section id="contact" class="section">
     <div class="card">
-      <div class="h2"><span class="dot"></span><h3>Contacto</h3></div>
+      <h2 class="h2">Contacto</h2>
       <p class="meta">📱 +57 302 338 7884</p>
       <p class="meta">✉️ <a href="mailto:jd-torralvo@hotmail.com">jd-torralvo@hotmail.com</a></p>
+      <p>Connect with me on <a href="https://www.linkedin.com/in/jadder-torralvo/?originalSubdomain=co" target="_blank">LinkedIn</a></p>
       <p class="meta">📍 Cartagena, Colombia</p>
     </div>
   </section>
@@ -138,14 +254,12 @@ body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transiti
 </div>
 
 <script>
-// Animación: revelar las tarjetas al hacer scroll
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){ entry.target.classList.add('revealed'); }
   });
-},{threshold:0.15});
+},{threshold:0.1});
 document.querySelectorAll('.card').forEach(el=>observer.observe(el));
 </script>
-
 </body>
 </html>
