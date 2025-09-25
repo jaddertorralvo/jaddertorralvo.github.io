@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jadder Torralvo | CV</title>
+<style>
+:root {
+  --bg-light:#ffffff;
+  --card-light:#f4f6f9;
+  --text-light:#111827;
+  --bg-dark:#0f172a;
+  --card-dark:#1e293b;
+  --text-dark:#f1f5f9;
+  --accent:#3b82f6;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif}
+body{line-height:1.6;background:var(--bg-light);color:var(--text-light);}
+.container{max-width:900px;margin:30px auto;padding:20px}
+.header{display:flex;gap:20px;align-items:center;background:var(--card-light);padding:20px;border-radius:10px;border:1px solid #e6eef9}
+.profile-pic{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--accent)}
+.header-info h1{font-size:1.6rem;margin-bottom:6px}
+.header-info p{color:#374151;font-size:0.95rem}
+.section{margin-top:20px}
+.card{background:var(--card-light);padding:16px;border-radius:10px;border:1px solid #e8f0fb}
+h2{color:var(--accent);margin-bottom:10px;font-size:1.1rem}
+ul{margin-left:16px}
+li::marker{color:var(--accent)}
+.contact a{color:var(--accent);text-decoration:none}
+.footer{margin-top:24px;text-align:center;color:#6b7280;font-size:0.9rem}
+@media(max-width:640px){.header{flex-direction:column;text-align:center}.header-info h1{font-size:1.3rem}}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body{background:var(--bg-dark);color:var(--text-dark);}
+  .header{background:var(--card-dark);border:1px solid #334155}
+  .header-info p{color:#cbd5e1;}
+  .card{background:var(--card-dark);border:1px solid #334155}
+  .footer{color:#94a3b8;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <img src="profile.jpg" alt="Foto de Jadder Torralvo" class="profile-pic">
+    <div class="header-info">
+      <h1>Jadder Torralvo</h1>
+      <p>Key Account Manager - Turismo Náutico | Cartagena, Colombia</p>
+      <p class="contact">📱 +57 302 338 7884 • ✉️ <a href="mailto:jd-torralvo@hotmail.com">jd-torralvo@hotmail.com</a></p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="card">
+      <h2>Perfil Profesional</h2>
+      <p>Profesional en Hotelería y Turismo con experiencia en gestión de eventos corporativos, viajes premium y turismo de lujo. Especializado en atención a clientes internacionales, cuentas clave y coordinación logística de proyectos de alto impacto.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <h2>Experiencia Profesional</h2>
+      <ul>
+        <li><strong>Key Account Manager</strong> | Bona Vida Catamaranes (2023 – Presente) — Planificación y ejecución de eventos corporativos y privados; desarrollo de cuentas clave y estrategias de upselling.</li>
+        <li><strong>Supervisor de Recepción</strong> | Sofitel Barú Calablanca Beach Resort (2021 – 2023) — Coordinación de operaciones y logística para eventos y grupos internacionales.</li>
+        <li><strong>Recepcionista</strong> | Hotel Intercontinental Cartagena (2015 – 2020) — Atención a clientes corporativos; gestión de reservas y apoyo en convenciones.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <h2>Educación y Certificaciones</h2>
+      <ul>
+        <li>Diplomado en Gestión de Cuentas Clave (KAM) — Universidad del Norte (2023)</li>
+        <li>Administración de Empresas Turísticas y Hoteleras — UNICOLOMBO (2012 – 2019)</li>
+        <li>Certificado en Desarrollo y Planificación Turística — Universidad Metropolitana, Panamá (2018)</li>
+        <li>Certificado de Dominio del Inglés (Bilingüe) — Centro Colombo Americano</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <h2>Habilidades Clave</h2>
+      <ul>
+        <li>Gestión de eventos corporativos, grupos y cuentas clave</li>
+        <li>Negociación y diseño de propuestas personalizadas</li>
+        <li>Coordinación logística de proyectos turísticos y MICE</li>
+        <li>Atención a clientes VIP internacionales</li>
+        <li>Manejo de CRM y sistemas hoteleros (Opera)</li>
+        <li>Inglés avanzado</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">© 2025 Jadder Torralvo • Cartagena, Colombia</footer>
+</div>
+</body>
+</html>
