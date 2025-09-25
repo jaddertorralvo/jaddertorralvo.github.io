@@ -1,101 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Jadder Torralvo | CV</title>
+<title>Jadder Torralvo — Interactive CV</title>
 <style>
-:root {
+:root{
   --bg-light:#ffffff;
-  --card-light:#f4f6f9;
-  --text-light:#111827;
-  --bg-dark:#0f172a;
-  --card-dark:#1e293b;
-  --text-dark:#f1f5f9;
-  --accent:#3b82f6;
+  --card-light:#f7f9fc;
+  --text-light:#0f1724;
+  --muted-light:#475569;
+  --accent:#0066cc;
+  --accent-2:#0ea5a4;
+  --bg-dark:#071028;
+  --card-dark:#0f1724;
+  --text-dark:#e6eef8;
+  --muted-dark:#9fb1c8;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif}
-body{line-height:1.6;background:var(--bg-light);color:var(--text-light);}
-.container{max-width:900px;margin:30px auto;padding:20px}
-.header{display:flex;gap:20px;align-items:center;background:var(--card-light);padding:20px;border-radius:10px;border:1px solid #e6eef9}
-.profile-pic{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--accent)}
-.header-info h1{font-size:1.6rem;margin-bottom:6px}
-.header-info p{color:#374151;font-size:0.95rem}
-.section{margin-top:20px}
-.card{background:var(--card-light);padding:16px;border-radius:10px;border:1px solid #e8f0fb}
-h2{color:var(--accent);margin-bottom:10px;font-size:1.1rem}
-ul{margin-left:16px}
-li::marker{color:var(--accent)}
-.contact a{color:var(--accent);text-decoration:none}
-.footer{margin-top:24px;text-align:center;color:#6b7280;font-size:0.9rem}
-@media(max-width:640px){.header{flex-direction:column;text-align:center}.header-info h1{font-size:1.3rem}}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  body{background:var(--bg-dark);color:var(--text-dark);}
-  .header{background:var(--card-dark);border:1px solid #334155}
-  .header-info p{color:#cbd5e1;}
-  .card{background:var(--card-dark);border:1px solid #334155}
-  .footer{color:#94a3b8;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{background:var(--bg-light);color:var(--text-light);line-height:1.5;transition:background 300ms,color 300ms}
+.container{max-width:1000px;margin:32px auto;padding:20px}
+.header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));backdrop-filter: blur(6px);border-radius:10px;padding:12px;border:1px solid #eef5ff;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.profile-pic{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 6px 18px rgba(6,30,80,0.08)}
+.brand h1{font-size:1.15rem;margin-bottom:4px}
+.brand p{font-size:0.9rem;color:var(--muted-light)}
+.nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+.nav a{color:var(--muted-light);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:0.9rem;transition:all 180ms}
+.nav a:hover{background:rgba(0,102,204,0.08);color:var(--accent)}
+.section{margin-top:28px}
+.card{background:var(--card-light);padding:18px;border-radius:12px;border:1px solid #e8f3ff;box-shadow:0 8px 30px rgba(12,38,77,0.04);transform:translateY(12px);opacity:0;transition:all 600ms cubic-bezier(.2,.9,.25,1)}
+.card.revealed{transform:none;opacity:1}
+.h2{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.h2 .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(0,102,204,0.35)}
+.meta{color:var(--muted-light);font-size:0.95rem;margin-bottom:8px}
+.skills{display:flex;gap:8px;flex-wrap:wrap}
+.skill{background:rgba(0,102,204,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-size:0.85rem}
+.footer{margin-top:28px;text-align:center;color:#64748b;font-size:0.9rem}
+@media (prefers-color-scheme: dark){
+  body{background:var(--bg-dark);color:var(--text-dark)}
+  .header{background:linear-gradient(180deg, rgba(8,16,30,0.8), rgba(6,12,20,0.6));border:1px solid rgba(255,255,255,0.04)}
+  .brand p{color:var(--muted-dark)}
+  .card{background:var(--card-dark);border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 26px rgba(0,0,0,0.45)}
+  .nav a{color:var(--muted-dark)}
+  .meta{color:var(--muted-dark)}
+  .footer{color:#9fb1c8}
+  .skill{background:rgba(14,165,164,0.06);color:var(--accent-2)}
 }
 </style>
 </head>
 <body>
 <div class="container">
+
   <header class="header">
-    <img src="profile.jpg" alt="Foto de Jadder Torralvo" class="profile-pic">
-    <div class="header-info">
-      <h1>Jadder Torralvo</h1>
-      <p>Key Account Manager - Turismo Náutico | Cartagena, Colombia</p>
-      <p class="contact">📱 +57 302 338 7884 • ✉️ <a href="mailto:jd-torralvo@hotmail.com">jd-torralvo@hotmail.com</a></p>
+    <div class="brand">
+      <img src="profile.jpg" alt="Jadder Torralvo" class="profile-pic">
+      <div>
+        <h1>Jadder Torralvo</h1>
+        <p>Key Account Manager • Turismo Náutico — Cartagena</p>
+      </div>
     </div>
+    <nav class="nav">
+      <a href="#profile">Perfil</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#education">Educación</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#contact">Contacto</a>
+    </nav>
   </header>
 
-  <section class="section">
+  <section id="profile" class="section">
     <div class="card">
-      <h2>Perfil Profesional</h2>
-      <p>Profesional en Hotelería y Turismo con experiencia en gestión de eventos corporativos, viajes premium y turismo de lujo. Especializado en atención a clientes internacionales, cuentas clave y coordinación logística de proyectos de alto impacto.</p>
+      <div class="h2"><span class="dot"></span><h3>Perfil Profesional</h3></div>
+      <p class="meta">
+        Soy un profesional en Hotelería y Turismo con experiencia en la <strong>gestión de cuentas clave, eventos corporativos y turismo de lujo</strong>. A lo largo de mi trayectoria he trabajado en reconocidas cadenas hoteleras y empresas de turismo náutico, donde he fortalecido mis habilidades en la <strong>atención a clientes VIP internacionales, la planificación de experiencias premium y la coordinación logística de proyectos de alto impacto</strong>.
+      </p>
+      <p class="meta">
+        Me apasiona diseñar y ejecutar <strong>eventos exclusivos</strong> que superen las expectativas de los clientes, aportando valor mediante propuestas personalizadas y negociaciones estratégicas. Mi experiencia me ha permitido construir relaciones sólidas con clientes corporativos e internacionales, generando confianza y nuevas oportunidades de negocio.
+      </p>
+      <p class="meta">
+        Cuento con una sólida formación en Administración de Empresas Turísticas y Hoteleras, un <strong>Diplomado en Gestión de Cuentas Clave (KAM)</strong> y certificaciones internacionales. Además, domino el <strong>inglés avanzado</strong> y el uso de sistemas CRM como Opera, lo que me permite desenvolverme con facilidad en contextos globales.
+      </p>
+      <p class="meta">
+        Me caracterizo por mi compromiso con la <strong>excelencia en el servicio, la innovación y la orientación al detalle</strong>, buscando siempre crear experiencias memorables y aportar al desarrollo del turismo de alto nivel en Cartagena y la región.
+      </p>
     </div>
   </section>
 
-  <section class="section">
+  <section id="experience" class="section">
     <div class="card">
-      <h2>Experiencia Profesional</h2>
+      <div class="h2"><span class="dot"></span><h3>Experiencia</h3></div>
       <ul>
-        <li><strong>Key Account Manager</strong> | Bona Vida Catamaranes (2023 – Presente) — Planificación y ejecución de eventos corporativos y privados; desarrollo de cuentas clave y estrategias de upselling.</li>
-        <li><strong>Supervisor de Recepción</strong> | Sofitel Barú Calablanca Beach Resort (2021 – 2023) — Coordinación de operaciones y logística para eventos y grupos internacionales.</li>
-        <li><strong>Recepcionista</strong> | Hotel Intercontinental Cartagena (2015 – 2020) — Atención a clientes corporativos; gestión de reservas y apoyo en convenciones.</li>
+        <li><strong>Key Account Manager</strong> | Bona Vida Catamaranes (2023 – Presente)</li>
+        <li><strong>Supervisor de Recepción</strong> | Sofitel Barú Calablanca (2021 – 2023)</li>
+        <li><strong>Recepcionista</strong> | Hotel Intercontinental Cartagena (2015 – 2020)</li>
       </ul>
     </div>
   </section>
 
-  <section class="section">
+  <section id="education" class="section">
     <div class="card">
-      <h2>Educación y Certificaciones</h2>
+      <div class="h2"><span class="dot"></span><h3>Educación</h3></div>
       <ul>
-        <li>Diplomado en Gestión de Cuentas Clave (KAM) — Universidad del Norte (2023)</li>
-        <li>Administración de Empresas Turísticas y Hoteleras — UNICOLOMBO (2012 – 2019)</li>
-        <li>Certificado en Desarrollo y Planificación Turística — Universidad Metropolitana, Panamá (2018)</li>
-        <li>Certificado de Dominio del Inglés (Bilingüe) — Centro Colombo Americano</li>
+        <li>Diplomado en Gestión de Cuentas Clave — Univ. del Norte (2023)</li>
+        <li>Administración de Empresas Turísticas y Hoteleras — UNICOLOMBO (2012–2019)</li>
+        <li>Certificado en Planificación Turística — Univ. Metropolitana, Panamá (2018)</li>
       </ul>
     </div>
   </section>
 
-  <section class="section">
+  <section id="skills" class="section">
     <div class="card">
-      <h2>Habilidades Clave</h2>
-      <ul>
-        <li>Gestión de eventos corporativos, grupos y cuentas clave</li>
-        <li>Negociación y diseño de propuestas personalizadas</li>
-        <li>Coordinación logística de proyectos turísticos y MICE</li>
-        <li>Atención a clientes VIP internacionales</li>
-        <li>Manejo de CRM y sistemas hoteleros (Opera)</li>
-        <li>Inglés avanzado</li>
-      </ul>
+      <div class="h2"><span class="dot"></span><h3>Habilidades</h3></div>
+      <div class="skills">
+        <span class="skill">Gestión de Eventos</span>
+        <span class="skill">Key Account Management</span>
+        <span class="skill">Atención VIP</span>
+        <span class="skill">Inglés Avanzado</span>
+        <span class="skill">Negociación</span>
+        <span class="skill">CRM / Opera</span>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">© 2025 Jadder Torralvo • Cartagena, Colombia</footer>
+  <section id="contact" class="section">
+    <div class="card">
+      <div class="h2"><span class="dot"></span><h3>Contacto</h3></div>
+      <p class="meta">📱 +57 302 338 7884</p>
+      <p class="meta">✉️ <a href="mailto:jd-torralvo@hotmail.com">jd-torralvo@hotmail.com</a></p>
+      <p class="meta">📍 Cartagena, Colombia</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2025 Jadder Torralvo • Cartagena, Colombia
+  </footer>
 </div>
+
+<script>
+// Animación: revelar las tarjetas al hacer scroll
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('revealed'); }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.card').forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
